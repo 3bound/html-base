@@ -34,6 +34,8 @@ Production environment (minified JS and CSS)
 
 ## Install
 
+This makes all targets before installing. Staging and production ENVIRONMENT options can be passed as before.
+
     make install
 
 ## Clean
