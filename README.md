@@ -12,7 +12,7 @@ The project assumes that the installation directory will be owned by a user with
 
     SUDO ?= $(PROJECT_NAME)
 
-## tmux
+## Tmux
 
 Launch the project tmux session
 
