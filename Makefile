@@ -116,10 +116,10 @@ define BROWSERIFY_CMD =
 endef
 SASS_CMD = @sass $< | postcss -u autoprefixer > $@
 else ifeq ($(ENVIRONMENT),staging)
-BROWSERIFY_CMD = @browserify -g uglifyify $< | terser -c warnings=false -o $@
+BROWSERIFY_CMD = @browserify -p bundle-collapser/plugin -g uglifyify $< | terser -c warnings=false -o $@
 SASS_CMD = @sass $< | postcss -u autoprefixer cssnano | cleancss -o $@
 else ifeq ($(ENVIRONMENT),production)
-BROWSERIFY_CMD = @browserify -g uglifyify $< | terser -c warnings=false -o $@
+BROWSERIFY_CMD = @browserify -p bundle-collapser/plugin -g uglifyify $< | terser -c warnings=false -o $@
 SASS_CMD = @sass $< | postcss -u autoprefixer cssnano | cleancss -o $@
 else
 $(error Unrecognised ENVIRONMENT $(ENVIRONMENT))
