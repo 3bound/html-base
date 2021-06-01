@@ -50,7 +50,7 @@ Watch for file changes and automatically recompile and install
 
 GNU Make\
 cwebp\
-dart-sass (alternatively, the NPM sass package can be installed)
+dart-sass (alternatively, the NPM sass package can be installed)\
 inotifywait (for file watching)
 
 ## License
