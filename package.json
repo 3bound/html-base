@@ -1,0 +1,41 @@
+{
+  "name": "html-base",
+  "version": "0.0.1",
+  "description": "A base HTML project",
+  "author": "John King",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "",
+    "@babel/preset-env": "",
+    "autoprefixer": "",
+    "babelify": "",
+    "browserify": "",
+    "browserslist": "",
+    "bundle-collapser": "",
+    "chai": "",
+    "clean-css-cli": "",
+    "cssnano": "",
+    "eslint": "",
+    "eslint-config-standard": "",
+    "eslint-plugin-import": "",
+    "eslint-plugin-node": "",
+    "eslint-plugin-promise": "",
+    "imagemin-cli": "",
+    "imagemin-mozjpeg": "",
+    "imagemin-pngquant": "",
+    "mocha": "",
+    "postcss": "",
+    "postcss-cli": "",
+    "sinon": "",
+    "svgo": "",
+    "terser": "",
+    "uglifyify": ""
+  },
+  "dependencies": {
+    "core-js": "^3",
+    "flickity": "",
+    "folktale": "",
+    "normalize.scss": "",
+    "ramda": ""
+  }
+}
