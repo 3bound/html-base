@@ -29,6 +29,7 @@
     "sinon": "",
     "svgo": "",
     "terser": "",
+    "typescript": "^4.3.4",
     "uglifyify": ""
   },
   "dependencies": {
