@@ -8,10 +8,8 @@
     "@babel/core": "",
     "@babel/preset-env": "",
     "autoprefixer": "",
-    "babelify": "",
-    "browserify": "",
+    "babel-loader": "^8.2.2",
     "browserslist": "",
-    "bundle-collapser": "",
     "chai": "",
     "clean-css-cli": "",
     "cssnano": "",
@@ -28,9 +26,11 @@
     "postcss-cli": "",
     "sinon": "",
     "svgo": "",
-    "terser": "",
     "typescript": "^4.3.4",
-    "uglifyify": ""
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "core-js": "^3",

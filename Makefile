@@ -27,7 +27,7 @@ CSS_INPUT_DIR = $(INPUT_DIR)/scss
 FONT_INPUT_DIR = $(INPUT_DIR)/fonts
 HTML_INPUT_DIR = $(INPUT_DIR)/html
 IMG_INPUT_DIR = $(INPUT_DIR)/img
-JS_INPUT_DIR = $(INPUT_DIR)/js/node_modules
+JS_INPUT_DIR = $(INPUT_DIR)/js
 JS_APP_INPUT_DIR = $(JS_INPUT_DIR)/app
 JS_LIBRARY_INPUT_DIR = $(JS_INPUT_DIR)/lib
 
@@ -111,15 +111,15 @@ COMPILE_MSG = @printf "Compiling $^\n--> $@\n\n"
 ##### Compilation commands #####
 
 ifeq ($(ENVIRONMENT),development)
-define BROWSERIFY_CMD =
-@browserify --debug $< > $@
+define JS_CMD =
+@webpack --config webpack.dev.js
 endef
 SASS_CMD = @sass $< | postcss -u autoprefixer > $@
 else ifeq ($(ENVIRONMENT),staging)
-BROWSERIFY_CMD = @browserify -p bundle-collapser/plugin -g uglifyify $< | terser -c warnings=false -o $@
+JS_CMD = @webpack --config webpack.prod.js
 SASS_CMD = @sass $< | postcss -u autoprefixer cssnano | cleancss -o $@
 else ifeq ($(ENVIRONMENT),production)
-BROWSERIFY_CMD = @browserify -p bundle-collapser/plugin -g uglifyify $< | terser -c warnings=false -o $@
+JS_CMD = @webpack --config webpack.prod.js
 SASS_CMD = @sass $< | postcss -u autoprefixer cssnano | cleancss -o $@
 else
 $(error Unrecognised ENVIRONMENT $(ENVIRONMENT))
@@ -159,7 +159,7 @@ test: $(NODE_MODULES_DIR)
 
 # CSS
 
-$(CSS_OUTPUT_DIR)/bundle.css: $(CSS_ENTRY_POINT) $(CSS_INPUTS)
+$(CSS_OUTPUT_DIR)/bundle.css: $(CSS_ENTRY_POINT) $(CSS_INPUTS) .browserslistrc
 	$(COMPILE_MSG)
 	@mkdir -p $(@D)
 	$(SASS_CMD)
@@ -254,10 +254,10 @@ $(IMG_OUTPUT_DIR)/%.webp : $(IMG_INPUT_DIR)/%.webp
 
 # Javascript
 
-$(JS_OUTPUT_DIR)/bundle.js: $(JS_ENTRY_POINT) $(JS_APP_INPUTS)
+$(JS_OUTPUT_DIR)/bundle.js: $(JS_ENTRY_POINT) $(JS_APP_INPUTS) .browserslistrc
 	$(COMPILE_MSG)
 	@mkdir -p $(@D)
-	$(BROWSERIFY_CMD)
+	$(JS_CMD)
 
 
 # Node modules
